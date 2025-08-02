@@ -77,4 +77,30 @@
         return;
       }
 
-      grid.innerHTML = items.m
+      grid.innerHTML = items.map(it => {
+        const title = it.title || it.name || '';
+        const price = Number(it.price || 0).toFixed(2);
+        const img = it.imageUrl || it.image || '';
+        const desc = it.description || '';
+        return `
+          <article class="product-card">
+            <img src="${img}" alt="${escapeHtml(title)}" loading="lazy">
+            <div class="product-title">${escapeHtml(title)}</div>
+            <div class="product-price">$${price}</div>
+            ${desc ? `<p>${escapeHtml(desc)}</p>` : ''}
+            <a href="#" class="buy-button">Buy Now</a>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(s = '') {
+      return s.replace(/[&<>"']/g, m => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]
+      ));
+    }
+
+    loadItems();
+  </script>
+</body>
+</html>
