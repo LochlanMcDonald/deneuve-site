@@ -6,36 +6,40 @@
   <title>Deneuve</title>
   <style>
     body {
-  font-family: 'Georgia', serif;
-  margin: 0;
-  padding: 2em;
-  background-color: #8e75bc;
-  color: #e27b1a;
-  display: flex; /* Optional: helps with centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  min-height: 100vh; /* Full viewport height */
-}
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 2em;
+      background-color: #8e75bc;
+      color: #e27b1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-.products-grid {
-  display: flex;
-  flex-direction: column; /* Stack items in a column */
-  align-items: center; /* Center items horizontally */
-  gap: 16px; /* Space between cards */
-  width: 100%; /* Ensure it respects body padding */
-  max-width: 300px; /* Optional: limit column width for better appearance */
-}
+    .products-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
 
-.product-card {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 12px;
-  background: #689940;
-  color: #000;
-  text-align: center;
-  width: 100%; /* Ensure card takes full width of container */
-  max-width: 220px; /* Consistent card width */
-}
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 12px;
+      background: #689940;
+      color: #000;
+      text-align: center;
+      width: 100%;
+      max-width: 220px;
+    }
+  </style>
+</head>
+
+<body>
   <header>
     <img src="deneuve_logocut.png" alt="Deneuve Logo" />
     <h1>Deneuve</h1>
@@ -44,13 +48,7 @@
     </nav>
   </header>
 
-  <!-- Dynamic Products Grid -->
   <section id="products" class="products-grid"></section>
-
-  <!-- Static Hardcoded Products -->
-
-
-
 
   <footer>
     <img src="deneuve_girlcut.png" alt="Deneuve Girl Art" />
@@ -74,32 +72,9 @@
 
     function render(items) {
       const grid = document.getElementById('products');
-      if (!items.length) { grid.innerHTML = '<p>No items yet.</p>'; return; }
+      if (!items.length) {
+        grid.innerHTML = '<p>No items yet.</p>';
+        return;
+      }
 
-      grid.innerHTML = items.map(it => {
-        const title = it.title || it.name || '';
-        const price = Number(it.price || 0).toFixed(2);
-        const img   = it.imageUrl || it.image || '';
-        const desc  = it.description || '';
-        return `
-          <article class="product-card">
-            <img src="${img}" alt="${escapeHtml(title)}" loading="lazy">
-            <div class="product-title">${escapeHtml(title)}</div>
-            <div class="product-price">$${price}</div>
-            ${desc ? `<p>${escapeHtml(desc)}</p>` : ''}
-            <a href="#" class="buy-button">Buy Now</a>
-          </article>
-        `;
-      }).join('');
-    }
-
-    function escapeHtml(s = '') {
-      return s.replace(/[&<>"']/g, m => (
-        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]
-      ));
-    }
-
-    loadItems();
-  </script>
-</body>
-</html>
+      grid.innerHTML = items.m
