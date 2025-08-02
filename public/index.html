@@ -9,21 +9,39 @@
       font-family: 'Georgia', serif;
       margin: 0;
       padding: 2em;
-      background-color: #8e75bc;
+      background-color: #4d1675db;
       color: #e27b1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+    }
+
+    header, footer {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    header img {
+      width: 120px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0.5em 0 0.2em;
+    }
+
+    nav {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+    }
+
+    nav span {
+      margin: 0 0.5em;
+      color: #a0522d;
     }
 
     .products-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 16px;
-      width: 100%;
-      max-width: 300px;
+      align-items: start;
     }
 
     .product-card {
@@ -33,8 +51,79 @@
       background: #689940;
       color: #000;
       text-align: center;
+    }
+
+    .product-card img {
       width: 100%;
-      max-width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #f6f6f6;
+    }
+
+    .product-title {
+      font-weight: 600;
+      margin: 8px 0 4px;
+    }
+
+    .product-price {
+      font-weight: 700;
+    }
+
+    .buy-button {
+      display: inline-block;
+      margin-top: 0.5em;
+      padding: 0.5em 1em;
+      background-color: #a0522d;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .buy-button:hover {
+      background-color: #8b4513;
+    }
+
+    .product {
+      max-width: 400px;
+      margin: 2em auto;
+      padding: 1em;
+      border-bottom: 1px dashed #d2b48c;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .product h2 {
+      font-size: 1.5em;
+      margin: 0.5em 0;
+    }
+
+    .product p {
+      margin: 0.5em 0;
+    }
+
+    .store-hours {
+      text-align: center;
+      margin-top: 3em;
+    }
+
+    .store-hours ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .store-hours li {
+      margin: 0.2em 0;
+    }
+
+    footer img {
+      margin-top: 2em;
+      width: 180px;
     }
   </style>
 </head>
@@ -51,23 +140,9 @@
   <section id="products" class="products-grid"></section>
 
   <!-- Static Hardcoded Products -->
-  <section class="products-grid">
-    <article class="product-card">
-      <img src="dress1.jpg" alt="Vintage Dress 1" />
-      <div class="product-title">Vintage Dress 1</div>
-      <div class="product-price">$120.00</div>
-      <p>Elegant 1950s style summer dress</p>
-      <a href="#" class="buy-button">Buy Now</a>
-    </article>
 
-    <article class="product-card">
-      <img src="dress2.jpg" alt="Vintage Dress 2" />
-      <div class="product-title">Vintage Dress 2</div>
-      <div class="product-price">$98.00</div>
-      <p>Playful polka-dot retro style</p>
-      <a href="#" class="buy-button">Buy Now</a>
-    </article>
-  </section>
+
+
 
   <footer>
     <img src="deneuve_girlcut.png" alt="Deneuve Girl Art" />
@@ -91,16 +166,13 @@
 
     function render(items) {
       const grid = document.getElementById('products');
-      if (!items.length) {
-        grid.innerHTML = '<p>No items yet.</p>';
-        return;
-      }
+      if (!items.length) { grid.innerHTML = '<p>No items yet.</p>'; return; }
 
       grid.innerHTML = items.map(it => {
         const title = it.title || it.name || '';
         const price = Number(it.price || 0).toFixed(2);
-        const img = it.imageUrl || it.image || '';
-        const desc = it.description || '';
+        const img   = it.imageUrl || it.image || '';
+        const desc  = it.description || '';
         return `
           <article class="product-card">
             <img src="${img}" alt="${escapeHtml(title)}" loading="lazy">
