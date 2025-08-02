@@ -11,10 +11,10 @@
       padding: 2em;
       background-color: #9d77ab;
       color: #e27b1a;
+      text-align: center;
     }
 
     header, footer {
-      text-align: center;
       margin-bottom: 2em;
     }
 
@@ -38,26 +38,21 @@
     }
 
     .products-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  max-width: 700px;     /* ← wider limit for larger screens */
-  margin: 0 auto;
-  width: 100%;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
 
-.product-card {
-  width: 100%;
-  max-width: 600px;      /* ← wider individual cards */
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 16px;
-  background: #689940;
-  color: #000;
-  text-align: center;
-}
-
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 12px;
+      background: #689940;
+      color: #000;
+      text-align: center;
+      width: 260px;
+    }
 
     .product-card img {
       width: 100%;
@@ -90,46 +85,24 @@
       background-color: #8b4513;
     }
 
-    .product {
-      max-width: 400px;
-      margin: 2em auto;
-      padding: 1em;
-      border-bottom: 1px dashed #d2b48c;
-      text-align: center;
-    }
-
-    .product img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-    }
-
-    .product h2 {
-      font-size: 1.5em;
-      margin: 0.5em 0;
-    }
-
-    .product p {
-      margin: 0.5em 0;
-    }
-
-    .store-hours {
-      text-align: center;
-      margin-top: 3em;
-    }
-
-    .store-hours ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .store-hours li {
-      margin: 0.2em 0;
-    }
-
     footer img {
       margin-top: 2em;
       width: 180px;
+    }
+
+    .loader {
+      border: 6px solid #e27b1a;
+      border-top: 6px solid #ffffff;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      animation: spin 1s linear infinite;
+      margin: 1em auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -142,13 +115,13 @@
     </nav>
   </header>
 
-  <!-- Dynamic Products Grid -->
-  <section id="products" class="products-grid"></section>
-
-  <!-- Static Hardcoded Products -->
-
-
-
+  <!-- Products will appear here -->
+  <section id="products" class="products-grid">
+    <div>
+      <div class="loader"></div>
+      <p>Loading products...</p>
+    </div>
+  </section>
 
   <footer>
     <img src="deneuve_girlcut.png" alt="Deneuve Girl Art" />
@@ -166,13 +139,16 @@
         render(items);
       } catch (e) {
         console.error('Failed to load items', e);
-        document.getElementById('products').innerHTML = '<p>Failed to load items.</p>';
+        document.getElementById('products').innerHTML = '<p style="text-align:center;color:#fff;">Failed to load products.</p>';
       }
     }
 
     function render(items) {
       const grid = document.getElementById('products');
-      if (!items.length) { grid.innerHTML = '<p>No items yet.</p>'; return; }
+      if (!items.length) {
+        grid.innerHTML = '<p>No items yet.</p>';
+        return;
+      }
 
       grid.innerHTML = items.map(it => {
         const title = it.title || it.name || '';
