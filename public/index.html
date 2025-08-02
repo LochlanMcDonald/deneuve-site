@@ -38,22 +38,26 @@
     }
 
     .products-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center the column horizontally */
-      gap: 16px;
-      margin: 0 auto;
-      max-width: 420px; /* Optional: limit overall width */
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 700px;     /* ← wider limit for larger screens */
+  margin: 0 auto;
+  width: 100%;
+}
 
-    .product-card {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 12px;
-      background: #689940;
-      color: #000;
-      text-align: center;
-    }
+.product-card {
+  width: 100%;
+  max-width: 600px;      /* ← wider individual cards */
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  background: #689940;
+  color: #000;
+  text-align: center;
+}
+
 
     .product-card img {
       width: 100%;
