@@ -1,14 +1,21 @@
+'use strict';
 
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
+/** Azure App Service entry point: build the app, listen, shut down cleanly. */
 
-app.use(express.static('public'));
+const config = require('./src/config');
+const { createApp } = require('./src/app');
 
-app.get('/', (req, res) => {
-  res.send('Welcome to Deneuve!');
+const server = createApp().listen(config.port, () => {
+  console.log(`Deneuve is open on http://localhost:${config.port} (${config.env})`);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+/** Finish in-flight requests before the platform reclaims the container. */
+for (const signal of ['SIGTERM', 'SIGINT']) {
+  process.on(signal, () => {
+    console.log(`${signal} received — closing down.`);
+    server.close(() => process.exit(0));
+    setTimeout(() => process.exit(1), 10_000).unref();
+  });
+}
+
+module.exports = server;

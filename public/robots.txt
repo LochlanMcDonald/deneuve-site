@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://deneuve-shop.azurewebsites.net/sitemap.xml

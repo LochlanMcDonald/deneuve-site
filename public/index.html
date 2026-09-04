@@ -1,180 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Deneuve</title>
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      margin: 0;
-      padding: 2em;
-      background-color: #9d77ab;
-      color: #864f0b;
-      text-align: center;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deneuve — Style, Alter, Repair | Tailoring Atelier</title>
+<meta name="description" content="Deneuve is a tailoring atelier for styling, alterations and repair. Hand-finished garments, considered mending, and a small shop of one-off pieces.">
+<meta name="theme-color" content="#f4e8cd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17170f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://deneuve-shop.azurewebsites.net/">
 
-    header, footer {
-      margin-bottom: 2em;
-    }
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deneuve">
+<meta property="og:title" content="Deneuve — Style, Alter, Repair">
+<meta property="og:description" content="A tailoring atelier for styling, alterations and repair. Hand-finished garments and considered mending.">
+<meta property="og:image" content="/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
-    header img {
-      width: 120px;
-    }
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 
-    h1 {
-      font-size: 2.5em;
-      margin: 0.5em 0 0.2em;
-    }
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/styles.css">
 
-    nav {
-      font-size: 1.1em;
-      margin-bottom: 2em;
-    }
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/main.js" type="module"></script>
 
-    nav span {
-      margin: 0 0.5em;
-      color: #005b37d0;
-    }
-
-    .products-grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .product-card {
-      border: 1px solid #d8cb77;
-      border-radius: 12px;
-      padding: 12px;
-      background: #cfc261;
-      color: #000;
-      text-align: center;
-      width: 260px;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px;
-      background: #984141;
-    }
-
-    .product-title {
-      font-weight: 600;
-      margin: 8px 0 4px;
-    }
-
-    .product-price {
-      font-weight: 700;
-    }
-
-    .buy-button {
-      display: inline-block;
-      margin-top: 0.5em;
-      padding: 0.5em 1em;
-      background-color: #4785bb;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-
-    .buy-button:hover {
-      background-color: #8b4513;
-    }
-
-    footer img {
-      margin-top: 2em;
-      width: 180px;
-    }
-
-    .loader {
-      border: 6px solid #3f0d0d;
-      border-top: 6px solid #9d77ab;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      animation: spin 1s linear infinite;
-      margin: 1em auto;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "Deneuve",
+  "description": "Tailoring atelier for styling, alterations and repair.",
+  "image": "/assets/img/og-card.jpg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "128 Rue Sainte-Catherine",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "11:00", "closes": "17:00" }
+  ]
+}
+</script>
 </head>
+
 <body>
-  <header>
-    <img src="deneuve_logocut.png" alt="Deneuve Logo" />
-    <h1>Deneuve</h1>
-    <nav>
-      <span>Style</span>•<span>Alter</span>•<span>Repair</span>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/>
+    </symbol>
+    <symbol id="i-needle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 3 8 16"/><path d="m5 19 3-3"/><circle cx="4" cy="20" r="1.6"/><path d="M17 3.6c-2 1.2-2 3.4 0 4.6s2 3.4 0 4.6"/>
+    </symbol>
+    <symbol id="i-patch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/><path d="m13 13 2 2M16 12l2 2"/>
+    </symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 6l12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M11 20A7 7 0 0 1 4 13c0-6 5-9 16-10 0 11-4 16-9 17Z"/><path d="M5 21c3-6 6-8 10-9"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ---------------------------------------------------------- Ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__item">Hand-finished since 1974</div>
+    <div class="ticker__item">Walk-in mending, Tuesday to Saturday</div>
+    <div class="ticker__item">Free fitting consultation</div>
+    <div class="ticker__item">We repair what we sell, forever</div>
+    <div class="ticker__item">Hand-finished since 1974</div>
+    <div class="ticker__item">Walk-in mending, Tuesday to Saturday</div>
+    <div class="ticker__item">Free fitting consultation</div>
+    <div class="ticker__item">We repair what we sell, forever</div>
+  </div>
+</div>
+
+<!-- ---------------------------------------------------------- Header -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/" aria-label="Deneuve, home">
+      <img class="brand__mark" src="/assets/img/mark-small.png" alt="" width="192" height="152" fetchpriority="high">
+      <span>
+        <span class="brand__name">Deneuve</span>
+        <span class="brand__tag">Style · Alter · Repair</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <a class="nav__link" href="#services">Services</a>
+      <a class="nav__link" href="#shop">Shop</a>
+      <a class="nav__link" href="#process">How it works</a>
+      <a class="nav__link" href="#atelier">Atelier</a>
+      <a class="nav__link" href="#visit">Visit</a>
     </nav>
-  </header>
 
-  <!-- Products will appear here -->
-  <section id="products" class="products-grid">
-    <div>
-      <div class="loader"></div>
-      <p>Loading products...</p>
+    <div class="header-tools">
+      <button class="icon-btn" id="themeToggle" type="button" aria-pressed="false"
+              aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="theme-icon-light" aria-hidden="true"><use href="#i-moon"></use></svg>
+        <svg class="theme-icon-dark" aria-hidden="true" hidden><use href="#i-sun"></use></svg>
+      </button>
+
+      <button class="icon-btn cart-btn" id="cartToggle" type="button"
+              aria-label="Open basket" aria-expanded="false" aria-controls="cartDrawer">
+        <svg aria-hidden="true"><use href="#i-cart"></use></svg>
+        <span class="cart-btn__count" id="cartCount" hidden>0</span>
+      </button>
+
+      <button class="icon-btn nav-toggle" id="navToggle" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg class="nav-icon-open" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <svg class="nav-icon-close" aria-hidden="true" hidden><use href="#i-close"></use></svg>
+      </button>
     </div>
-  </section>
+  </div>
+</header>
 
-  <footer>
-    <img src="deneuve_girlcut.png" alt="Deneuve Girl Art" />
-  </footer>
+<main id="main">
 
-  <script>
-    const API_URL = "https://testdeneuve-fpfgfjbpcydxfzgc.canadacentral-01.azurewebsites.net/api/listItems";
+<!-- ------------------------------------------------------------ Hero -->
+<section class="hero">
+  <div class="hero__rays" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">Tailoring atelier · Montréal</p>
+      <h1 class="hero__title misprint">Clothes<br>worth<em>keeping.</em></h1>
+      <p class="lede">
+        We cut, take in, let out and mend. Bring us the jacket you love but never wear,
+        and we will make it fit the person you are now.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href="#visit">Book a fitting</a>
+        <a class="btn btn--ghost" href="#shop">See the shop</a>
+      </div>
 
-    async function loadItems() {
-      try {
-        const res = await fetch(API_URL, { credentials: 'omit' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const items = Array.isArray(data) ? data : (data.items || []);
-        render(items);
-      } catch (e) {
-        console.error('Failed to load items', e);
-        document.getElementById('products').innerHTML = '<p style="text-align:center;color:#fff;">Failed to load products.</p>';
-      }
-    }
+      <dl class="hero__stats">
+        <div class="stat"><dt class="stat__label">Years at the bench</dt><dd class="stat__value">50</dd></div>
+        <div class="stat"><dt class="stat__label">Day turnaround</dt><dd class="stat__value">3</dd></div>
+        <div class="stat"><dt class="stat__label">Free repairs</dt><dd class="stat__value">∞</dd></div>
+      </dl>
+    </div>
 
-    function render(items) {
-      const grid = document.getElementById('products');
-      if (!items.length) {
-        grid.innerHTML = '<p>No items yet.</p>';
-        return;
-      }
+    <div class="hero__art">
+      <div class="seal">
+        <svg class="seal__burst" viewBox="0 0 100 100" aria-hidden="true">
+          <path fill="#f09000" stroke="#242418" stroke-width="2.5" stroke-linejoin="round"
+                d="M50 2 57 14 70 8 71 22 85 20 80 33 94 36 84 46 95 55 82 61 89 73 75 75 76 89 63 84 58 97 50 86 42 97 37 84 24 89 25 75 11 73 18 61 5 55 16 46 6 36 20 33 15 20 29 22 30 8 43 14Z"/>
+        </svg>
+        <span class="seal__text">Est.<br>1974</span>
+      </div>
+      <div class="halftone hero__halftone" aria-hidden="true"></div>
+      <img src="/assets/img/girl.webp"
+           srcset="/assets/img/girl-small.webp 460w, /assets/img/girl.webp 900w"
+           sizes="(max-width: 860px) 80vw, 520px"
+           width="900" height="819" fetchpriority="high"
+           alt="Illustration of a seamstress in a green blouse and marigold skirt, beside the Deneuve crying-eye monogram.">
+    </div>
+  </div>
+</section>
 
-      grid.innerHTML = items.map(it => {
-        const title = it.title || it.name || '';
-        const price = Number(it.price || 0).toFixed(2);
-        const img   = it.imageUrl || it.image || '';
-        const desc  = it.description || '';
-        return `
-          <article class="product-card">
-            <img src="${img}" alt="${escapeHtml(title)}" loading="lazy">
-            <div class="product-title">${escapeHtml(title)}</div>
-            <div class="product-price">$${price}</div>
-            ${desc ? `<p>${escapeHtml(desc)}</p>` : ''}
-            <a href="#" class="buy-button">Buy Now</a>
-          </article>
-        `;
-      }).join('');
-    }
 
-    function escapeHtml(s = '') {
-      return s.replace(/[&<>"']/g, m => (
-        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]
-      ));
-    }
+<!-- -------------------------------------------------------- Services -->
+<section class="section section--tint" id="services">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">What we do</p>
+      <h2>Three ways in.</h2>
+      <p class="lede">Every garment gets the same bench, the same hands and the same thread count. Only the brief changes.</p>
+    </div>
 
-    loadItems();
-  </script>
+    <div class="services">
+      <article class="service" data-reveal>
+        <span class="service__index" aria-hidden="true">01</span>
+        <svg class="service__icon" aria-hidden="true"><use href="#i-scissors"></use></svg>
+        <h3>Style</h3>
+        <p>A wardrobe edit and a cutting plan. We look at what you own, what you reach for, and what is quietly wrong with the rest.</p>
+        <ul class="service__list">
+          <li>Wardrobe consultation</li>
+          <li>Made-to-measure cutting</li>
+          <li>Fabric sourcing</li>
+        </ul>
+        <p class="service__price">From $120 · 90 minutes</p>
+      </article>
+
+      <article class="service" data-reveal style="--reveal-delay:90ms">
+        <span class="service__index" aria-hidden="true">02</span>
+        <svg class="service__icon" aria-hidden="true"><use href="#i-needle"></use></svg>
+        <h3>Alter</h3>
+        <p>Taking in, letting out, shortening, reshaping. The difference between a garment you own and one that looks like it was made for you.</p>
+        <ul class="service__list">
+          <li>Hems and cuffs</li>
+          <li>Waist and seat adjustment</li>
+          <li>Shoulder and sleeve reset</li>
+        </ul>
+        <p class="service__price">From $35 · 3 day turnaround</p>
+      </article>
+
+      <article class="service" data-reveal style="--reveal-delay:180ms">
+        <span class="service__index" aria-hidden="true">03</span>
+        <svg class="service__icon" aria-hidden="true"><use href="#i-patch"></use></svg>
+        <h3>Repair</h3>
+        <p>Visible or invisible, your choice. Moth holes, blown seams, worn elbows and broken zips — mended to outlast the original.</p>
+        <ul class="service__list">
+          <li>Darning and reweaving</li>
+          <li>Zip and lining replacement</li>
+          <li>Sashiko and visible mending</li>
+        </ul>
+        <p class="service__price">From $25 · walk-ins welcome</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ------------------------------------------------------------ Shop -->
+<section class="section" id="shop">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">The shop</p>
+      <h2>One-off pieces, <span class="underline-wobble">finished by hand.</span></h2>
+      <p class="lede">Small runs and single garments from the bench. What sells out stays sold out.</p>
+    </div>
+
+    <div class="shop__toolbar" data-reveal>
+      <div class="field field--search">
+        <label for="shopSearch">Search</label>
+        <input class="input" id="shopSearch" type="search" placeholder="Linen, jacket, size 12…" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="shopSort">Sort by</label>
+        <select class="select" id="shopSort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="title">Name: A–Z</option>
+        </select>
+      </div>
+      <p class="shop__result-count" id="shopCount" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="filters" id="shopFilters" role="group" aria-label="Filter by category"></div>
+
+    <div class="grid" id="products" aria-busy="true"
+         aria-label="Products"><!-- populated by main.js --></div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------- Process -->
+<section class="section section--tint" id="process">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="eyebrow">How it works</p>
+      <h2>Four steps, no mystery.</h2>
+    </div>
+
+    <ol class="process">
+      <li class="step" data-reveal>
+        <h3>Bring it in</h3>
+        <p>Drop by with the garment, or book a slot if you would rather have the bench to yourself.</p>
+      </li>
+      <li class="step" data-reveal style="--reveal-delay:80ms">
+        <h3>Get pinned</h3>
+        <p>We fit it on you, pin it, and talk through what is possible and what is not. Estimates are given before anything is cut.</p>
+      </li>
+      <li class="step" data-reveal style="--reveal-delay:160ms">
+        <h3>We work</h3>
+        <p>Most alterations take three days. Complex reconstruction takes two weeks. You will hear from us either way.</p>
+      </li>
+      <li class="step" data-reveal style="--reveal-delay:240ms">
+        <h3>Wear it out</h3>
+        <p>Final fitting in the shop. If anything still pulls, it goes back on the bench at no charge.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------- Atelier -->
+<section class="section" id="atelier">
+  <div class="wrap atelier">
+    <figure class="atelier__figure" data-reveal>
+      <img src="/assets/img/girl.webp"
+           srcset="/assets/img/girl-small.webp 460w, /assets/img/girl.webp 900w"
+           sizes="(max-width: 760px) 88vw, 520px"
+           width="900" height="819" loading="lazy"
+           alt="Illustration of a seamstress at work, surrounded by fabric.">
+    </figure>
+
+    <div class="atelier__notes" data-reveal style="--reveal-delay:120ms">
+      <p class="eyebrow">The atelier</p>
+      <h2>A small room and a very good iron.</h2>
+      <p>
+        Deneuve started as one machine in a back room and has stayed deliberately small.
+        Two cutters, one presser, and a rule that nothing leaves the shop unless it would
+        be worn by the person who made it.
+      </p>
+
+      <ul class="note-list">
+        <li>
+          <svg aria-hidden="true"><use href="#i-leaf"></use></svg>
+          <span><strong>Deadstock first.</strong> Cloth is sourced from mill ends and closed runs before anything new is ordered.</span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-needle"></use></svg>
+          <span><strong>Hand-finished.</strong> Buttonholes, linings and hems are worked by hand, because they last longer that way.</span>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="#i-patch"></use></svg>
+          <span><strong>Repaired forever.</strong> Anything bought here comes back for free mending, for as long as you own it.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------- Visit -->
+<section class="section section--tint" id="visit">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Visit</p>
+      <h2>Come and be measured.</h2>
+    </div>
+
+    <div class="visit">
+      <div class="stack--lg stack" data-reveal>
+        <div>
+          <h3 class="cluster"><svg width="22" height="22" aria-hidden="true"><use href="#i-clock"></use></svg> Opening hours</h3>
+          <dl class="hours" id="hours">
+            <div data-day="1"><dt>Monday</dt><dd>Closed</dd></div>
+            <div data-day="2"><dt>Tuesday</dt><dd>10:00 – 18:00</dd></div>
+            <div data-day="3"><dt>Wednesday</dt><dd>10:00 – 18:00</dd></div>
+            <div data-day="4"><dt>Thursday</dt><dd>10:00 – 18:00</dd></div>
+            <div data-day="5"><dt>Friday</dt><dd>10:00 – 18:00</dd></div>
+            <div data-day="6"><dt>Saturday</dt><dd>11:00 – 17:00</dd></div>
+            <div data-day="0"><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+
+        <div>
+          <h3 class="cluster"><svg width="22" height="22" aria-hidden="true"><use href="#i-pin"></use></svg> The shop</h3>
+          <address style="font-style:normal">
+            128 Rue Sainte-Catherine<br>
+            Montréal, QC<br>
+            <a href="tel:+15145550142">+1 (514) 555-0142</a><br>
+            <a href="mailto:bench@deneuve.example">bench@deneuve.example</a>
+          </address>
+        </div>
+      </div>
+
+      <form class="enquiry" id="enquiryForm" novalidate data-reveal style="--reveal-delay:120ms">
+        <h3>Tell us about the piece</h3>
+
+        <div class="enquiry__row">
+          <div class="field">
+            <label for="fName">Name</label>
+            <input class="input" id="fName" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" id="errName" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input class="input" id="fEmail" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" id="errEmail" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fService">What do you need?</label>
+          <select class="select" id="fService" name="service">
+            <option value="alteration">An alteration</option>
+            <option value="repair">A repair</option>
+            <option value="styling">A styling session</option>
+            <option value="made-to-measure">Something made to measure</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fMessage">The garment</label>
+          <textarea class="textarea" id="fMessage" name="message" required
+                    placeholder="A wool coat, 1960s, shoulders too wide and the lining has gone."></textarea>
+          <p class="field-error" id="errMessage" aria-live="polite"></p>
+        </div>
+
+        <p class="form-status" id="formStatus" role="status" hidden></p>
+        <button class="btn btn--brick btn--block" type="submit" id="enquirySubmit">Send it over</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ---------------------------------------------------------- Footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="/assets/img/mark-small.png" alt="Deneuve" width="192" height="152" loading="lazy">
+        <p>A tailoring atelier for styling, alterations and repair. Established 1974.</p>
+      </div>
+
+      <nav aria-label="Shop">
+        <h2 class="footer__title">Shop</h2>
+        <ul class="footer__links">
+          <li><a href="#shop">All pieces</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">How it works</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Atelier">
+        <h2 class="footer__title">Atelier</h2>
+        <ul class="footer__links">
+          <li><a href="#atelier">Our story</a></li>
+          <li><a href="#visit">Visit us</a></li>
+          <li><a href="mailto:bench@deneuve.example">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="footer__title">Find us</h2>
+        <address style="font-style:normal;color:color-mix(in srgb,var(--paper) 72%,transparent)">
+          128 Rue Sainte-Catherine<br>Montréal, QC<br>
+          <a href="tel:+15145550142">+1 (514) 555-0142</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <p>&copy; <span id="year">2026</span> Deneuve. All rights reserved.</p>
+      <p>Set in Fraunces &amp; Jost. Printed on the web.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ------------------------------------------------- Overlays -->
+<div class="scrim" id="scrim" hidden></div>
+
+<div class="drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="drawer__head">
+    <h2 id="cartTitle">Your basket</h2>
+    <button class="icon-btn" type="button" data-close-cart aria-label="Close basket">
+      <svg aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+
+  <div class="drawer__body" id="cartBody"></div>
+
+  <div class="drawer__foot">
+    <p class="cart-total"><span>Subtotal</span> <span id="cartTotal">$0.00</span></p>
+    <button class="btn btn--block" type="button" id="checkoutBtn">Reserve these pieces</button>
+    <p class="cart-note">Reserved items are held for 48 hours. Payment is taken in the shop.</p>
+  </div>
+</div>
+
+<div class="quickview" id="quickview" role="dialog" aria-modal="true" aria-labelledby="qvTitle" aria-hidden="true">
+  <div class="quickview__panel">
+    <button class="icon-btn quickview__close" type="button" data-close-quickview aria-label="Close">
+      <svg aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+    <div class="quickview__media" id="qvMedia"></div>
+    <div class="quickview__body">
+      <p class="eyebrow" id="qvCategory"></p>
+      <h2 id="qvTitle"></h2>
+      <p class="quickview__price" id="qvPrice"></p>
+      <p id="qvDesc"></p>
+      <div id="qvSizes" class="cluster"></div>
+      <button class="btn" type="button" id="qvAdd">Add to basket</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
 </body>
 </html>
-

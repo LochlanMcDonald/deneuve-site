@@ -1,12 +1,19 @@
-
 {
   "name": "deneuve-site",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "description": "Storefront for Deneuve \u2014 style, alter, repair.",
   "main": "app.js",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "test": "node --test \"test/**/*.test.js\""
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.18.2"
   }
 }
