@@ -1,6 +1,7 @@
 # Deneuve
 
-Storefront for Deneuve — a tailoring atelier that styles, alters and repairs.
+Storefront for Deneuve, which repairs and alters vintage clothing and then
+sells it.
 
 A small Express server and a hand-built, no-framework front end. The visual
 language is 1970s screenprint: flat colour, chunky ink outlines, hard offset
@@ -47,7 +48,8 @@ src/
   catalogue.js          Upstream fetch, normalisation, in-memory cache
   middleware.js         Security headers, request log, static cache policy
 public/
-  index.html            The page
+  index.html            The shop
+  about.html            What the business actually is, in detail
   404.html 500.html     Error pages
   assets/css/           styles.css (design system) + fonts.css (self-hosted faces)
   assets/js/            theme.js (pre-paint) + ES modules: util, ui, cart, shop, forms
@@ -113,11 +115,19 @@ favicons and the social card. This took the two logo files from 4.9 MB to
 The design is finished; the words are not. These are invented and should be
 replaced before the site goes live:
 
-- "Est. 1974", "50 years at the bench", and the ticker claims
 - The address, phone number and email (`128 Rue Sainte-Catherine`,
-  `+1 (514) 555-0142`, `bench@deneuve.example`) — in `index.html`, the
-  JSON-LD block, and `public/404.html`
+  `+1 (514) 555-0142`, `bench@deneuve.example`), which appear in
+  `index.html`, `about.html`, and the JSON-LD block
 - Opening hours, service descriptions and prices
+- The "3 day turnaround" figure, on the home page and in `about.html`
+- Details in `about.html`: where stock is sourced, the condition grade
+  definitions, and the list of what you will not do. Written to be plausible,
+  not from anything you told me. Read it through before it goes live.
+
+The founding year (1999) is set in three places: the hero seal and ticker in
+`index.html`, the opening line of `about.html`, and the social card text in
+`tools/build-assets.py`. The "years open" figure is computed from it at
+runtime, so it does not go stale.
 - `canonical` / `og:url` / `sitemap.xml` point at
   `deneuve-shop.azurewebsites.net`; update if the site gets a real domain
 

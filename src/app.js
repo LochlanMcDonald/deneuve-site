@@ -78,7 +78,7 @@ function createApp({ quiet = false } = {}) {
     }
     res.status(202).json({
       ok: true,
-      message: 'Thank you — we will reply within one working day.',
+      message: 'Thanks. We will reply within one working day.',
     });
   });
 

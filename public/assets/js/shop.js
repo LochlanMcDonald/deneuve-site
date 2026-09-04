@@ -319,7 +319,7 @@ function openQuickview(item) {
   $('#qvCategory').textContent = item.category;
   $('#qvTitle').textContent = item.title;
   $('#qvPrice').textContent = money(item.price, currency);
-  $('#qvDesc').textContent = item.description || 'Ask us at the bench — we know its history.';
+  $('#qvDesc').textContent = item.description || 'Ask us at the bench. We know its history.';
 
   const media = $('#qvMedia');
   media.replaceChildren();

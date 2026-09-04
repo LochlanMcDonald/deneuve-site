@@ -73,7 +73,7 @@ export function initForm() {
       const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        say(data.message || 'Thank you — we will be in touch.', true);
+        say(data.message || 'Thanks. We will be in touch.', true);
         form.reset();
         FIELDS.forEach((f) => setError(f, ''));
       } else {

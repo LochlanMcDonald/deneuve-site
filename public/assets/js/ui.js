@@ -86,7 +86,9 @@ function initNavToggle() {
 }
 
 function initScrollSpy() {
-  const links = $$('.nav__link');
+  // Only in-page links have a section to watch; querySelector would throw on
+  // a path like "/about".
+  const links = $$('.nav__link').filter((a) => a.getAttribute('href')?.startsWith('#'));
   const sections = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
   if (!sections.length) return;
 
@@ -131,11 +133,20 @@ export function initReveal() {
   targets.forEach((el) => io.observe(el));
 }
 
-/** Marks today's opening hours and stamps the footer year. */
+/** Marks today's opening hours, stamps the footer year, counts years open. */
 export function initDates() {
-  const row = $(`#hours [data-day="${new Date().getDay()}"]`);
+  const now = new Date();
+
+  const row = $(`#hours [data-day="${now.getDay()}"]`);
   if (row) row.dataset.today = 'true';
 
   const year = $('#year');
-  if (year) year.textContent = String(new Date().getFullYear());
+  if (year) year.textContent = String(now.getFullYear());
+
+  // Keeps the "years open" figure right without anyone remembering to edit it.
+  // The markup carries a correct value already, so no-JS shows a real number.
+  $$('[data-since]').forEach((el) => {
+    const since = Number(el.dataset.since);
+    if (Number.isFinite(since)) el.textContent = String(now.getFullYear() - since);
+  });
 }

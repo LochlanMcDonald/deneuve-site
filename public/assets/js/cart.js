@@ -235,6 +235,6 @@ export function initCart() {
     const pieces = cart.count;
     cart.clear();
     closeCart();
-    toast(`${pieces} piece${pieces === 1 ? '' : 's'} reserved — we will email you shortly.`);
+    toast(`${pieces} piece${pieces === 1 ? '' : 's'} reserved. We will email you shortly.`);
   });
 }

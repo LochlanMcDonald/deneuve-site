@@ -188,7 +188,7 @@ def build_og_card():
 
     title = fitted(title_path, 132, [144, 900, 100, 1], 'DENEUVE')       # opsz wght SOFT WONK
     sub = fitted(text_path, 38, [500], 'STYLE · ALTER · REPAIR')
-    tag = fitted(text_path, 34, [400], 'A tailoring atelier since 1974')
+    tag = fitted(text_path, 34, [400], 'Vintage, repaired and sold since 1999')
 
     top = 196
     d.text((x + 7, top + 7), 'DENEUVE', font=title, fill=BRICK)   # misregistered plate
@@ -198,7 +198,7 @@ def build_og_card():
     d.text((x + 3, y), 'STYLE · ALTER · REPAIR', font=sub, fill=INK)
     y += sub.size + 26
     d.line([x + 3, y, x + 3 + min(avail, 430), y], fill=BRICK, width=5)
-    d.text((x + 3, y + 24), 'A tailoring atelier since 1974', font=tag, fill=(90, 78, 62))
+    d.text((x + 3, y + 24), 'Vintage, repaired and sold since 1999', font=tag, fill=(90, 78, 62))
 
     card.save(os.path.join(OUT, 'og-card.jpg'), quality=86, optimize=True, progressive=True)
     print('  og-card.jpg')

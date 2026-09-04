@@ -1,5 +1,3 @@
-@import url('fonts.css');
-
 /* ==========================================================================
    DENEUVE — a 1970s screenprint, rebuilt for the browser.
 
@@ -1532,3 +1530,96 @@ svg[hidden] { display: none !important; }
   .card__desc { display: none; }
   .card__foot { flex-wrap: wrap; }
 }
+
+/* ------------------------------------------------- 21. Long-form pages
+
+   The About page is mostly reading, so it drops to a single measure-width
+   column and leans on rules and numbers instead of cards. */
+
+.prose-head { padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.prose-head h1 { margin-block: 0.5rem 1rem; max-width: 16ch; }
+.prose-head .lede { max-width: 52ch; }
+
+.prose {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  max-width: 68ch;
+  padding-bottom: clamp(3.5rem, 9vw, 7rem);
+}
+
+.prose__block { display: grid; gap: 0.9rem; }
+
+.prose__block > h2 {
+  font-size: var(--step-2);
+  padding-bottom: 0.6rem;
+  border-bottom: var(--border) solid var(--rule);
+  margin-bottom: 0.4rem;
+}
+
+.prose__block p { max-width: var(--measure); }
+.prose__block a:not(.btn) { color: var(--brick-text); text-underline-offset: 0.2em; }
+.prose__block .btn { margin-top: 0.5rem; margin-right: 0.5rem; }
+
+/* Numbered steps, using the same outlined numerals as the home page. */
+.numbered { display: grid; gap: 1.6rem; counter-reset: n; }
+
+.numbered > li {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.4rem 1rem;
+  align-items: start;
+}
+
+.numbered > li::before {
+  counter-increment: n;
+  content: counter(n, decimal-leading-zero);
+  grid-row: span 2;
+  font-family: var(--font-display);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144;
+  font-weight: 900;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--brick-text);
+}
+
+.numbered h3 { font-size: var(--step-1); }
+.numbered p { color: var(--text-muted); }
+
+/* Condition grades: a definition list set as a ruled table. */
+.grades { display: grid; gap: 0; margin-top: 0.4rem; }
+
+.grades > div {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0.3rem 1.2rem;
+  padding: 0.9rem 0;
+  border-bottom: 2px dotted var(--rule-soft);
+}
+
+.grades > div:first-child { border-top: 2px dotted var(--rule-soft); }
+
+.grades dt {
+  font-family: var(--font-slab);
+  font-size: 0.92rem;
+  color: var(--brick-text);
+}
+
+.grades dd { margin: 0; color: var(--text-muted); }
+
+@media (max-width: 560px) {
+  .grades > div { grid-template-columns: 1fr; }
+  .numbered > li { grid-template-columns: 2.6rem 1fr; }
+}
+
+.plain-list { display: grid; gap: 0.7rem; margin-top: 0.3rem; }
+
+.plain-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  align-items: baseline;
+  color: var(--text-muted);
+}
+
+.plain-list li::before { content: '✕'; color: var(--brick-text); font-weight: 700; }
