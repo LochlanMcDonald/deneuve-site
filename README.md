@@ -18,6 +18,9 @@ npm run dev        # same, with reload on change
 npm test           # unit + HTTP tests
 ```
 
+CI runs the tests on Node 20, so check against that before pushing if you
+touch anything version-sensitive.
+
 ## Configuration
 
 All settings are environment variables with working defaults (`src/config.js`):

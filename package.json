@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node --watch app.js",
-    "test": "node --test \"test/**/*.test.js\""
+    "test": "node --test"
   },
   "dependencies": {
     "compression": "^1.7.4",
